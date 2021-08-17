@@ -4,6 +4,14 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+  <% @order.line_items.each do |item| %>
+    <%= render 'line_item', product: item.product, quantity: item[:quantity].to_i, item_price: item[:item_price_cents], total_price: item[:total_price_cents] %>
+  <% end %>
+
+  <div> Total: $<%= @order.total_cents / 100.0 %> </div>
+
+  <div>Purchased by <%= @order.email %></div> 
+
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
