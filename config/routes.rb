@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
-  # Set up on W9D3 - About Page
-  resource :about, only: [:index] do
-    root to: "about#index"
-  end
+  # Set up on W9D3 - About Page - Resources should usually match with a DB call. 
+  get "about", to: "about#index"
 
   resource :cart, only: [:show] do
     post   :add_item
