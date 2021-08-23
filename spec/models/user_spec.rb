@@ -45,15 +45,24 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
 
     it 'must login when a registered user provides the correct email and password' do
+      @user = User.create(name: "Chicken", email: "testing@1.com", password:"pollo1", password_confirmation:"pollo1")
+      expect(User.authenticate_with_credentials("testing@1.com", "pollo1")).to eq(@user)
     end
 
     it 'must not login when an incorrect email or password is provided' do
+      @user = User.create(name: "Chicken", email: "testing@1.com", password:"pollo1", password_confirmation:"pollo1")
+      expect(User.authenticate_with_credentials("testing@1.com", "wrongpassword")).to eq(nil)
+      expect(User.authenticate_with_credentials("wrongemail@1.com", "pollo1")).to eq(nil)
     end
 
     it 'must login and ignore leading and trailing spaces for e-mails' do
+      @user = User.create(name: "Chicken", email: "testing@1.com", password:"pollo1", password_confirmation:"pollo1")
+      expect(User.authenticate_with_credentials("   testing@1.com ", "pollo1")).to eq(@user)
     end
 
     it 'must login and be case insensitive for e-mails' do
+      @user = User.create(name: "Chicken", email: "testing@1.com", password:"pollo1", password_confirmation:"pollo1")
+      expect(User.authenticate_with_credentials("TeStIng@1.cOm", "pollo1")).to eq(@user)
     end
 
   end
