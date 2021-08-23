@@ -36,10 +36,10 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it 'must ignore leading and trailing spaces for e-mails' do
+    it 'must login and ignore leading and trailing spaces for e-mails' do
     end
 
-    it 'must be case insensitive for e-mails' do
+    it 'must login and be case insensitive for e-mails' do
     end
 
   end
