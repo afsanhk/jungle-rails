@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
     it 'requires emails, first name and last name' do
     end
 
-    it 'must have a minimum password length when a user account is being created' do
+    it 'must have a minimum password length of 6 when a user account is being created' do
       @user = User.new(name: "Chicken", email: "1@1.com", password:"four", password_confirmation:"pollo")
       expect(@user).to_not be_valid
     end
@@ -39,7 +39,13 @@ RSpec.describe User, type: :model do
   end
   
   describe '.authenticate_with_credentials' do
-    # examples for this class method here
+
+    it 'must login when a registered user provides the correct email and password' do
+    end
+
+    it 'must not login when an incorrect email or password is provided' do
+    end
+
     it 'must login and ignore leading and trailing spaces for e-mails' do
     end
 
