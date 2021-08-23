@@ -23,10 +23,10 @@ RSpec.feature "Visitor navigates to product detail page by clicking on a product
     visit root_path
     first('.product').click_on "Details"
     
-    # Need this to make sure the puts and screenshots are taken for the right thing
-    sleep(5)
     #DEBUG
-    puts page.html
+    # Need this to make sure the puts and screenshots are taken for the right thing
+    # sleep(5)
+    # puts page.html
     # save_screenshot
   
     #VERIFY
