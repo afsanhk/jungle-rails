@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   describe "Validations" do 
 
     it 'is valid with matching password and password_confirmation fields' do
+    @user = User.new
+    puts @user.inspect
     end
 
     it 'is invalid with non-matching password and password_confirmation fields' do
