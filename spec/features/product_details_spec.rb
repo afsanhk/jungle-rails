@@ -22,9 +22,12 @@ RSpec.feature "Visitor navigates to product detail page by clicking on a product
     #ACT
     visit root_path
     first('.product').click_on "Details"
-  
+    
+    # Need this to make sure the puts and screenshots are taken for the right thing
+    sleep(5)
     #DEBUG
-    save_screenshot
+    puts page.html
+    # save_screenshot
   
     #VERIFY
     expect(page).to have_css 'section.products-show'
