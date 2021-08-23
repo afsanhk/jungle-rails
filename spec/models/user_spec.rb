@@ -28,7 +28,11 @@ RSpec.describe User, type: :model do
       expect(@user2).to_not be_valid
     end
 
-    it 'requires emails, first name and last name' do
+    it 'requires email and name' do
+      @user1 = User.new(name: nil, email: "1@1.com", password:"poulet", password_confirmation:"poulet")
+      expect(@user1).to_not be_valid
+      @user2 = User.new(name: "Chicken", email: nil, password:"poulet", password_confirmation:"poulet")
+      expect(@user2).to_not be_valid
     end
 
     it 'must have a minimum password length of 6 when a user account is being created' do
