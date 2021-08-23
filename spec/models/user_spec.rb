@@ -20,11 +20,11 @@ RSpec.describe User, type: :model do
       expect(@user2).to be_valid
     end
 
-    it 'is invalid with repeated emails' do 
-      @user1 = User.new(name: "Chicken", email: "1@1.com", password:"pollo1", password_confirmation:"pollo1")
+    it 'is invalid with repeated emails (case insensitive)' do 
+      @user1 = User.new(name: "Chicken", email: "a@1.com", password:"pollo1", password_confirmation:"pollo1")
       expect(@user1).to be_valid
       @user1.save!
-      @user2 = User.new(name: "Chicken", email: "1@1.com", password:"pollo1", password_confirmation:"pollo1")
+      @user2 = User.new(name: "Chicken", email: "A@1.com", password:"pollo1", password_confirmation:"pollo1")
       expect(@user2).to_not be_valid
     end
 
@@ -36,8 +36,6 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    
-    
   end
   
   describe '.authenticate_with_credentials' do
