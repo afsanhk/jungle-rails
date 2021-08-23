@@ -17,10 +17,18 @@ RSpec.feature "Visitor navigates to product detail page by clicking on a product
     end
   end
 
-  #ACT
+  scenario "They click on a specific product image or details and see the details" do
+    
+    #ACT
+    visit root_path
+    first('.product').click_on "Details"
+  
+    #DEBUG
+    save_screenshot
+  
+    #VERIFY
+    expect(page).to have_css 'section.products-show'
+    expect(page).to have_css 'article.product-detail'
+  end
 
-  #DEBUG
-  #save_screenshot
-
-  #VERIFY
 end
